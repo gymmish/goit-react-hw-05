@@ -15,3 +15,11 @@ export async function getMovieSearch(moviesName) {
     )
     .then(result => result.data.results);
 }
+
+export async function getMovieById(moviesId) {
+  return await axios
+    .get(
+      `https://api.themoviedb.org/3/movie/${moviesId}?api_key=${KEY}&language=en-US&page=1&include_adult=false`
+    )
+    .then(result => result.data.results);
+}
