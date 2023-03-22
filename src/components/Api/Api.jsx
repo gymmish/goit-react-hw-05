@@ -16,10 +16,26 @@ export async function getMovieSearch(moviesName) {
     .then(result => result.data.results);
 }
 
-export async function getMovieById(moviesId) {
+export async function getMovieById(movieId) {
   return await axios
     .get(
-      `https://api.themoviedb.org/3/movie/${moviesId}?api_key=${KEY}&language=en-US&page=1&include_adult=false`
+      `https://api.themoviedb.org/3/movie/${movieId}?api_key=${KEY}&language=en-US&page=1&include_adult=false`
+    )
+    .then(result => result.data);
+}
+
+export async function getCredits(movieId) {
+  return await axios
+    .get(
+      `https://api.themoviedb.org/3/movie/${movieId}/credits?api_key=${KEY}&language=en-US&page=1&include_adult=false`
+    )
+    .then(result => result.data.cast);
+}
+
+export async function getReviews(movieId) {
+  return await axios
+    .get(
+      ` https://api.themoviedb.org/3/movie/${movieId}/reviews?api_key=${KEY}&language=en-US&page=1&include_adult=false`
     )
     .then(result => result.data.results);
 }
